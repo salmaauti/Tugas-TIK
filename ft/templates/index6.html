@@ -7,9 +7,36 @@
     <title>Ft</title>
 </head>
 <body>
+  <nav>
+    <img src="\static\images\gambar.png" height="80px">
+    <div class="logo">
+      
+    </div> 
+    <ul>
+      <li><a href="/kampus">BERANDA</a></li>
+      <li><a href="/profil">PROFIL</a></li>
+      <li><a href="/dosen">DOSEN</a></li>
+      <li><a href="/staf">STAF</a></li>
+      <li><a href="/mahasiswa">MAHASISWA</a></li>
+      <li><a href="/faperta">FAPERTA</a></li>
+      <li><a href="/feb">FEB</a></li>
+      <li><a href="/fh">FH</a></li>
+      <li><a href="/fisip">FISIP</a></li>
+      <li><a href="/fk">FK</a></li>
+      <li><a href="/fkip">FKIP</a></li>
+      <li><a href="/ft">FT</a></li>
+      <li><a href="/pascasarjana">PASCASARJANA</a></li>
+    </ul>
+  </nav>
+
+</body>
+<body>
+  <br>
+  <br>
+  <br>
     <center>
     <h1>FAKULTAS TEKNIK</h1>
-    <img src="\static\images\clgn.png" height="350px">
+    <img src="\static\images\clgn.png" height="250px">
     <p>Kampus Teknik (Cilegon)</p>
     </center>
     <br>
@@ -39,12 +66,58 @@
     <h2>Terdiri dari prodi</h2>
     <p>Teknik Elektro, Teknik Industri, Teknik Kimia, Teknik Mesin, Teknik Metalurgi, dan Teknik Sipil</p>
 </body>
+</html>
 
 <style>
-    body {
-        background-image: linear-gradient(to right, #DFD3C3, #7D6E83);
-        margin-left: 40px;
-        margin-right: 40px;      
-      }
-    </style> 
-</html>
+  body {
+background-image: linear-gradient(to right, #DFD3C3, #7D6E83);
+margin-left: 40px;
+margin-right: 40px;
+padding: 0;
+
+}
+
+nav {
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid white;
+}
+
+.logo {
+    float: left;
+    height: 10000px;
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    padding: 20px 20px;
+    justify-content: space-around;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    line-height: 80px;
+    text-decoration: none;
+    padding: 12px 20px;
+}
+
+nav ul li a:hover {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.8);
+}
+</style>
