@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahasiswa</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     
@@ -39,7 +42,12 @@
 <h1>Mahasiswa Pendidikan Matematika</h1>
 </center>
 <br>
-
+<br>
+<center>
+<a href="http://127.0.0.1:8000/tambah-mahasiswa/">Tambah Mahasiswa</a>
+<br>
+<br>
+</center>
 
 <center>
 <table border="1">
@@ -50,13 +58,14 @@
         <th>Tempat, Tanggal Lahir</th>
         <th>Email</th>
         <th>Foto</th>
+        <th>Action</th>
     </tr>
     
         {% for mahasiswa in student %}
         <tr>
             <td>{{mahasiswa.no}}</td>
             <td>{{mahasiswa.nama}}</td>
-            <td>{{mahasiswa.nim}}</td>
+            <td><a href="{% url 'ubah_mahasiswa' mahasiswa.id %}">{{mahasiswa.nim}}</a></td>
             <td>{{mahasiswa.ttl}}</td>
             <td>{{mahasiswa.email}}</td>
             <td>
@@ -64,13 +73,40 @@
                 <img src="{{ mahasiswa.foto.url }}" width="100px">
                 {% endif %}
             </td>
-
+            <td>
+                <center>
+                    <button data-toggle="modal" data-target="#hapus-{{ mahasiswa.id }}" class="btn btn-danger">Hapus</button>
+                </center>
+            </td>
+            <div class="modal" id="hapus-{{ mahasiswa.id }}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title">
+                                <h3>Hapus</h3>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            Apakah anda yakin akan menghapus <strong>{{ mahasiswa.nim | upper }}</strong>?
+                        </div>
+                        <div class="modal-footer">
+                          <a href="{% url 'hapus_mahasiswa' mahasiswa.id %}" class="btn btn-danger">Hapus</a>
+                          <button class="btn btn-dark" data-dismiss="modal">Tidak</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </tr>
         {% endfor %}
     
     </table>
     </center>
+    <br>
+<br>
+<br>
+    <script stype="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script> 
     </body>
 
   </html>

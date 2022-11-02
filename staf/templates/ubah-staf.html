@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STAFF</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     
@@ -34,76 +33,39 @@
       </nav>
   
   </body>
+</body>
 <br>
 <br>
 <br>
-<body>
-  <center>
-    <h1>STAF FKIP</h1>
-  </center>
-  <br>
-  <center>
-    <a href="http://127.0.0.1:8000/tambah-staf/">Tambah Staf</a>
-    </center>
-    <br>
-    <br>
- 
-  
-  <center>
-  <table border="1">
-      <tr>
-          <th>No</th>
-          <th>NIP</th>
-          <th>Nama</th>
-          <th>Jabatan</th>
-          <th>Action</th>
-      </tr>
-      
-          {% for staf in educator %}
-          <tr>
-              <td>{{staf.no}}</td>
-              <td><a href="{% url 'ubah_staf' staf.id %}">{{staf.nip}}</a></td>
-              <td>{{staf.nama}}</td>
-              <td>{{staf.jabatan}}</td>
-              <td>
-                <center>
-                  <button data-toggle="modal" data-target="#hapus-{{ staf.id }}" class="btn btn-danger">Hapus</button>
-              </center>
-          </td>
-          <div class="modal" id="hapus-{{ staf.id }}">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <div class="modal-title">
-                              <h3>Hapus</h3>
-                          </div>
-                      </div>
-                      <div class="modal-body">
-                          Apakah anda yakin akan menghapus <strong>{{ staf.nip | upper }}</strong>?
-                      </div>
-                      <div class="modal-footer">
-                        <a href="{% url 'hapus_staf' staf.id %}" class="btn btn-danger">Hapus</a>
-                        <button class="btn btn-dark" data-dismiss="modal">Tidak</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <h3>Ubah: {{ staf.nip }}</h3>
+        
+        {% for message in messages %}
+            {% if message %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
 
-           
-  
-  
-          </tr>
-          {% endfor %}
-      
-  </table>
+        <form action="{% url 'ubah_staf' staf.id %}" method="post">
+            {% csrf_token %}
 
-  </center>
-    <script stype="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-  </body>
-  </html>
+            {{ form.as_p }}
+    
+        <button class="btn btn-primary">Save</button>
+        <a href="/staf" class="btn btn-danger">Back</a>
+        </form>
+        
+    </div>
+   </div> 
+</div>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 
-  <style>
+</body>
+</html>
+
+<style>
     body {
   background-image: linear-gradient(to right, #DFD3C3, #7D6E83);
   margin-left: 40px;
